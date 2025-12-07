@@ -20,15 +20,15 @@ const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Все');
 
   const products: Product[] = [
-    { id: 1, name: 'Ноутбук Pro 15', price: 89990, category: 'Электроника', image: '💻', inStock: true },
-    { id: 2, name: 'Смартфон X12', price: 54990, category: 'Электроника', image: '📱', inStock: true },
-    { id: 3, name: 'Наушники Premium', price: 12990, category: 'Аксессуары', image: '🎧', inStock: true },
-    { id: 4, name: 'Умные часы Sport', price: 24990, category: 'Аксессуары', image: '⌚', inStock: true },
-    { id: 5, name: 'Планшет Tab 10', price: 34990, category: 'Электроника', image: '📱', inStock: false },
-    { id: 6, name: 'Клавиатура Mechanical', price: 8990, category: 'Аксессуары', image: '⌨️', inStock: true },
-    { id: 7, name: 'Монитор 27" 4K', price: 45990, category: 'Электроника', image: '🖥️', inStock: true },
-    { id: 8, name: 'Мышь Gaming Pro', price: 5990, category: 'Аксессуары', image: '🖱️', inStock: true },
-    { id: 9, name: 'Веб-камера HD', price: 7990, category: 'Аксессуары', image: '📷', inStock: true },
+    { id: 1, name: 'Ноутбук Pro 15', price: 89990, category: 'Электроника', image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80', inStock: true },
+    { id: 2, name: 'Смартфон X12', price: 54990, category: 'Электроника', image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80', inStock: true },
+    { id: 3, name: 'Наушники Premium', price: 12990, category: 'Аксессуары', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80', inStock: true },
+    { id: 4, name: 'Умные часы Sport', price: 24990, category: 'Аксессуары', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80', inStock: true },
+    { id: 5, name: 'Планшет Tab 10', price: 34990, category: 'Электроника', image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80', inStock: false },
+    { id: 6, name: 'Клавиатура Mechanical', price: 8990, category: 'Аксессуары', image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80', inStock: true },
+    { id: 7, name: 'Монитор 27" 4K', price: 45990, category: 'Электроника', image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80', inStock: true },
+    { id: 8, name: 'Мышь Gaming Pro', price: 5990, category: 'Аксессуары', image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&q=80', inStock: true },
+    { id: 9, name: 'Веб-камера HD', price: 7990, category: 'Аксессуары', image: 'https://images.unsplash.com/photo-1526406915894-7bcd65f60845?w=800&q=80', inStock: true },
   ];
 
   const categories = ['Все', ...Array.from(new Set(products.map(p => p.category)))];
@@ -100,8 +100,17 @@ const Catalog = () => {
               key={product.id}
               className="bg-white border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all group"
             >
-              <div className="aspect-square bg-secondary flex items-center justify-center text-8xl group-hover:scale-105 transition-transform">
-                {product.image}
+              <div className="aspect-square bg-secondary/20 overflow-hidden relative">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                {!product.inStock && (
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <span className="text-white font-semibold text-lg">Нет в наличии</span>
+                  </div>
+                )}
               </div>
               <div className="p-6">
                 <div className="flex items-start justify-between mb-2">

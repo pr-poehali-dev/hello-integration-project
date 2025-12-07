@@ -4,10 +4,34 @@ import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const featuredProducts = [
-    { id: 1, name: 'Ноутбук Pro 15', price: 89990, image: '💻' },
-    { id: 2, name: 'Смартфон X12', price: 54990, image: '📱' },
-    { id: 3, name: 'Наушники Premium', price: 12990, image: '🎧' },
-    { id: 4, name: 'Умные часы Sport', price: 24990, image: '⌚' },
+    { 
+      id: 1, 
+      name: 'Ноутбук Pro 15', 
+      price: 89990, 
+      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80',
+      category: 'Ноутбуки'
+    },
+    { 
+      id: 2, 
+      name: 'Смартфон X12', 
+      price: 54990, 
+      image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80',
+      category: 'Смартфоны'
+    },
+    { 
+      id: 3, 
+      name: 'Наушники Premium', 
+      price: 12990, 
+      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80',
+      category: 'Аудио'
+    },
+    { 
+      id: 4, 
+      name: 'Умные часы Sport', 
+      price: 24990, 
+      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80',
+      category: 'Аксессуары'
+    },
   ];
 
   return (
@@ -33,19 +57,26 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold mb-6 leading-tight">
+      <section className="relative bg-gradient-to-br from-primary to-primary/80 text-primary-foreground py-32 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?w=1600&q=80" 
+            alt="Hero background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl animate-fade-in">
+            <h1 className="text-6xl font-bold mb-6 leading-tight">
               Качественные товары для вашего бизнеса
             </h1>
             <p className="text-xl mb-8 text-primary-foreground/90 leading-relaxed">
               Широкий ассортимент электроники и аксессуаров с гарантией качества. 
               Быстрая доставка по всей России и профессиональная поддержка.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap">
               <Link to="/catalog">
-                <Button size="lg" variant="secondary" className="text-lg">
+                <Button size="lg" variant="secondary" className="text-lg hover-scale">
                   <Icon name="ShoppingBag" size={20} className="mr-2" />
                   Перейти в каталог
                 </Button>
@@ -115,8 +146,12 @@ const Index = () => {
               key={product.id}
               className="bg-white border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all group"
             >
-              <div className="aspect-square bg-secondary flex items-center justify-center text-8xl group-hover:scale-105 transition-transform">
-                {product.image}
+              <div className="aspect-square bg-secondary/20 overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-primary mb-3">{product.name}</h3>

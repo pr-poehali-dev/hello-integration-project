@@ -15,8 +15,8 @@ interface CartItem {
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([
-    { id: 1, name: 'Ноутбук Pro 15', price: 89990, quantity: 1, image: '💻' },
-    { id: 2, name: 'Наушники Premium', price: 12990, quantity: 2, image: '🎧' },
+    { id: 1, name: 'Ноутбук Pro 15', price: 89990, quantity: 1, image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80' },
+    { id: 2, name: 'Наушники Premium', price: 12990, quantity: 2, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80' },
   ]);
 
   const updateQuantity = (id: number, delta: number) => {
@@ -85,8 +85,12 @@ const Cart = () => {
             <div className="lg:col-span-2 space-y-4">
               {cartItems.map((item) => (
                 <div key={item.id} className="bg-white border border-border rounded-lg p-6 flex gap-6">
-                  <div className="w-24 h-24 bg-secondary rounded-lg flex items-center justify-center text-5xl flex-shrink-0">
-                    {item.image}
+                  <div className="w-24 h-24 bg-secondary/20 rounded-lg overflow-hidden flex-shrink-0">
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-primary mb-2">{item.name}</h3>
